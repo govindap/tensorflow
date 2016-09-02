@@ -1,4 +1,4 @@
-/* Copyright 2016 Google Inc. All Rights Reserved.
+/* Copyright 2016 The TensorFlow Authors. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ class RemoteDeviceTest : public ::testing::Test {
     int port;
     CHECK(RE2::FullMatch(hostport, "(.+):(\\d+)", &host, &port));
     GrpcChannelSpec spec;
-    spec.AddHostPortsJob("localhost", {hostport}, 1);
+    spec.AddHostPortsJob("localhost", {hostport});
     worker_cache_.reset(
         NewGrpcWorkerCache(NewGrpcChannelCache(spec, NewHostPortGrpcChannel)));
     remote_name_ = strings::StrCat("/job:", host, "/replica:0/task:0");

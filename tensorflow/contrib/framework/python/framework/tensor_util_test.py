@@ -1,4 +1,4 @@
-# Copyright 2016 Google Inc. All Rights Reserved.
+# Copyright 2016 The TensorFlow Authors. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -244,7 +244,8 @@ class WithShapeTest(tf.test.TestCase):
             incompatible_shape, tensor_partial_shape)
       for incompatible_shape in [[1, 2, 1]]:
         self.assertRaisesRegexp(
-            ValueError, "Incompatible shapes", tf.contrib.framework.with_shape,
+            ValueError, "Dimensions must be equal",
+            tf.contrib.framework.with_shape,
             incompatible_shape, tensor_partial_shape)
       for incompatible_shape in [[2, 1]]:
         self.assertRaisesRegexp(
